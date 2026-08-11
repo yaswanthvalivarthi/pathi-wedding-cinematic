@@ -1,26 +1,332 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ivory: #f8f0df;
+  --cream: #f4e7ce;
+  --maroon: #651f2b;
+  --maroon-deep: #3b1119;
+  --gold: #d5a85c;
+  --gold-light: #f1d79f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--maroon-deep);
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================================
+   DIVINE OPENING
+   ========================================= */
+
+.divine-opening {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--maroon-deep);
+}
+
+/* Main artwork */
+
+.divine-opening__background {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  background-image: url("/images/divine-opening.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transform: scale(1.015);
+
+  animation: opening-breathe 14s ease-in-out infinite alternate;
+}
+
+/* Cinematic darkening */
+
+.divine-opening__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(35, 12, 10, 0.55) 0%,
+      rgba(35, 12, 10, 0.18) 35%,
+      rgba(35, 12, 10, 0.18) 62%,
+      rgba(35, 12, 10, 0.7) 100%
+    );
+}
+
+/* Warm central atmosphere */
+
+.divine-opening__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255, 222, 164, 0.3) 0%,
+      rgba(255, 222, 164, 0.1) 25%,
+      transparent 58%
+    );
+
+  pointer-events: none;
+}
+
+/* Content */
+
+.divine-opening__content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 100svh;
+
+  padding:
+    clamp(42px, 7vh, 82px)
+    clamp(22px, 6vw, 80px)
+    clamp(28px, 6vh, 60px);
+
+  text-align: center;
+}
+
+/* =========================================
+   AUSPICIOUS TEXT
+   ========================================= */
+
+.divine-opening__auspicious {
+  color: var(--gold-light);
+
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.45;
+
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.45);
+
+  letter-spacing: 0.06em;
+}
+
+.divine-opening__auspicious p {
+  margin: 0;
+}
+
+/* =========================================
+   WEDDING INVITATION HEADING
+   ========================================= */
+
+.divine-opening__wedding-heading {
+  margin-top: -20px;
+  margin-bottom: -10px;
+
+  color: #fff8eb;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.divine-opening__wedding-heading p {
+  margin: 0;
+
+  font-size: clamp(30px, 5vw, 46px);
+
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================
+   SLOKA
+   ========================================= */
+
+.divine-opening__sloka {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: min(720px, 100%);
+
+  color: #f1e4cc;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+.divine-opening__sloka p {
+  margin: 6px 0;
+
+  font-size: clamp(15px, 2vw, 21px);
+  line-height: 1.4;
+
+  letter-spacing: 0.015em;
+}
+
+.divine-opening__line {
+  display: block;
+
+  width: 90px;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold),
+    transparent
+  );
+}
+
+/* =========================================
+   OPEN BUTTON
+   ========================================= */
+
+.divine-opening__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 190px;
+
+  padding: 13px 28px 12px;
+
+  border: 1px solid rgba(241, 215, 159, 0.7);
+  border-radius: 999px;
+
+  background: rgba(72, 20, 29, 0.78);
+
+  color: #fff1d3;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(5px);
+
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.divine-opening__button:hover {
+  background: rgba(95, 27, 39, 0.9);
+
+  border-color: var(--gold-light);
+
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.38),
+    0 0 25px rgba(213, 168, 92, 0.12);
+}
+
+.divine-opening__button span {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.divine-opening__button small {
+  margin-top: 5px;
+
+  font-size: 8px;
+  letter-spacing: 0.3em;
+
+  opacity: 0.72;
+}
+
+/* =========================================
+   SUBTLE CAMERA MOVEMENT
+   ========================================= */
+
+@keyframes opening-breathe {
+  from {
+    transform: scale(1.015);
+  }
+
+  to {
+    transform: scale(1.045);
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+  .divine-opening__wedding-heading {
+  margin-top: -12px;
+  margin-bottom: -4px;
+}
+
+.divine-opening__wedding-heading p {
+  font-size: 30px;
+}
+  .divine-opening__background {
+    background-position: center center;
+  }
+
+  .divine-opening__content {
+    padding-top: 38px;
+    padding-bottom: 28px;
+  }
+
+  .divine-opening__auspicious {
+    font-size: 20px;
+  }
+
+  .divine-opening__sloka {
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .divine-opening__sloka p {
+    margin: 2px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  .divine-opening__line {
+    width: 70px;
+  }
+
+  .divine-opening__button {
+    min-width: 180px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .divine-opening__background {
+    animation: none;
+  }
 }
