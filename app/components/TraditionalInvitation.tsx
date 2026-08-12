@@ -176,20 +176,6 @@ export default function TraditionalInvitation({
           </motion.div>
         </motion.section>
 
-        {/* Invitation by bride's parents */}
-        <motion.section
-          className="traditional-invitation__hosts"
-          {...reveal}
-        >
-          <h3>{invitation.hostsTitle}</h3>
-
-          <div className="traditional-invitation__host-names">
-            {invitation.hosts.map((name) => (
-              <p key={name}>{name}</p>
-            ))}
-          </div>
-        </motion.section>
-
         {/* Marriage */}
         <motion.section
           className="traditional-invitation__marriage"
@@ -244,17 +230,6 @@ export default function TraditionalInvitation({
           </p>
         </motion.section>
 
-        {/* Vindu / Dining */}
-        <motion.section
-          className="traditional-invitation__vindu"
-          {...reveal}
-        >
-          <span className="traditional-invitation__vindu-label">
-            {vindu.title}
-          </span>
-
-          <h3>{vindu.subtitle}</h3>
-        </motion.section>
 
         {/* Traditional closing blessing */}
         <motion.section
