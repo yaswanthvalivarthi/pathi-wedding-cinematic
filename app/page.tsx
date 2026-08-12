@@ -2,23 +2,42 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
 import DivineOpening from "./components/DivineOpening";
+import CoupleReveal from "./components/CoupleReveal";
+import TraditionalInvitation from "./components/TraditionalInvitation";
+import VenueDetails from "./components/VenueDetails";
+
+type Scene = "opening" | "couple" | "invitation" | "venue";
 
 export default function Home() {
-  const [isOpening, setIsOpening] = useState(false);
-  const [showInvitation, setShowInvitation] = useState(false);
+  const [scene, setScene] = useState<Scene>("opening");
 
-  const handleOpen = () => {
-    setIsOpening(true);
+  const handleOpeningComplete = () => {
+    setScene("couple");
+  };
 
-    setTimeout(() => {
-      setShowInvitation(true);
-    }, 900);
+  const handleCoupleComplete = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+
+    setScene("invitation");
+  };
+
+  const handleVenueContinue = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
   };
 
   return (
     <AnimatePresence mode="wait">
-      {!showInvitation ? (
+      {scene === "opening" && (
         <motion.div
           key="divine-opening"
           initial={{ opacity: 1 }}
@@ -32,13 +51,15 @@ export default function Home() {
           }}
         >
           <DivineOpening
-            onOpen={handleOpen}
-            isExiting={isOpening}
+            onOpen={handleOpeningComplete}
+            isExiting={false}
           />
         </motion.div>
-      ) : (
-        <motion.main
-          key="invitation"
+      )}
+
+      {scene === "couple" && (
+        <motion.div
+          key="couple-reveal"
           initial={{
             opacity: 0,
             scale: 0.98,
@@ -47,46 +68,67 @@ export default function Home() {
             opacity: 1,
             scale: 1,
           }}
+          exit={{
+            opacity: 0,
+            scale: 1.02,
+          }}
           transition={{
             duration: 1,
             ease: "easeOut",
           }}
-          style={{
-            minHeight: "100svh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "#f7efdf",
-            color: "#651f2b",
-            textAlign: "center",
-            padding: "24px",
+        >
+          <CoupleReveal onContinue={handleCoupleComplete} />
+        </motion.div>
+      )}
+
+      {scene === "invitation" && (
+        <motion.div
+          key="traditional-invitation"
+          initial={{
+            opacity: 0,
+            scale: 0.98,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.02,
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeOut",
           }}
         >
-          <div>
-            <p
-              style={{
-                fontFamily: "Georgia, serif",
-                fontSize: "14px",
-                letterSpacing: "0.2em",
-                marginBottom: "14px",
-                opacity: 0.7,
-              }}
-            >
-              THE INVITATION
-            </p>
+          <TraditionalInvitation
+            onContinue={() => setScene("venue")}
+          />
+        </motion.div>
+      )}
 
-            <h1
-              style={{
-                fontFamily: "Georgia, serif",
-                fontSize: "clamp(30px, 8vw, 52px)",
-                fontWeight: 400,
-                margin: 0,
-              }}
-            >
-              Coming Next
-            </h1>
-          </div>
-        </motion.main>
+      {scene === "venue" && (
+        <motion.div
+          key="venue-details"
+          initial={{
+            opacity: 0,
+            scale: 0.98,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.02,
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+          }}
+        >
+          <VenueDetails onContinue={handleVenueContinue} />
+        </motion.div>
       )}
     </AnimatePresence>
   );
