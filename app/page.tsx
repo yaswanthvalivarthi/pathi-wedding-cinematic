@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import DivineOpening from "./components/DivineOpening";
@@ -12,6 +12,15 @@ type Scene = "opening" | "couple" | "invitation" | "venue";
 
 export default function Home() {
   const [scene, setScene] = useState<Scene>("opening");
+  useEffect(() => {
+  if (scene === "venue") {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }
+}, [scene]);
 
   const handleOpeningComplete = () => {
     setScene("couple");

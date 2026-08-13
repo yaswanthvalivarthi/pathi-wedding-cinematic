@@ -16,11 +16,11 @@ type VenueDetailsProps = {
 export default function VenueDetails({
   onContinue,
 }: VenueDetailsProps) {
-  const { venue } = weddingData;
+  const { vindu, venue, hosts, organizers } = weddingData;
 
   return (
     <main className="venue-details">
-      {/* Traditional background ornaments */}
+      {/* Background ornaments */}
       <div
         className="venue-details__ornaments"
         aria-hidden="true"
@@ -59,136 +59,200 @@ export default function VenueDetails({
 
       <article className="venue-details__card">
 
-        {/* Header */}
-        <motion.header
-          className="venue-details__header"
-          initial={{
-            opacity: 0,
-            y: -18,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.9,
-            ease: "easeOut",
-          }}
-        >
-          <p>వివాహ వేడుక</p>
-
-          <h1>{venue.title}</h1>
-
-          <FloralDivider />
-        </motion.header>
-
-        {/* Venue image */}
-        <motion.figure
-          className="venue-details__image-frame"
-          initial={{
-            opacity: 0,
-            scale: 0.94,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-            delay: 0.25,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          <div className="venue-details__image-inner">
-            <Image
-              src="/images/venue.png"
-              alt="Wedding venue"
-              fill
-              sizes="(max-width: 600px) 82vw, 520px"
-              className="venue-details__image"
-              priority
-            />
-          </div>
-        </motion.figure>
-
-        {/* Venue information */}
+        {/* ================================
+            VINDU
+           ================================ */}
         <motion.section
-          className="venue-details__main"
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
+          className="venue-details__vindu"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.9,
-            delay: 0.5,
+            duration: 0.85,
             ease: "easeOut",
           }}
         >
-          <span className="venue-details__label">
-            వేదిక
-          </span>
+          <FloralDivider />
+
+          <p className="venue-details__vindu-title">
+            {vindu.title}
+          </p>
+
+          <h1>{vindu.subtitle}</h1>
+          {vindu.time && (
+  <p className="venue-details__vindu-time">
+    {vindu.time}
+  </p>
+)}
+          <motion.figure
+  className="venue-details__vindu-image-frame"
+  initial={{
+    opacity: 0,
+    scale: 0.94,
+    y: 12,
+  }}
+  animate={{
+    opacity: 1,
+    scale: 1,
+    y: 0,
+  }}
+  transition={{
+    duration: 0.9,
+    delay: 0.35,
+    ease: "easeOut",
+  }}
+>
+  <div className="venue-details__vindu-image-inner">
+  <Image
+    
+    alt="విందు భోజన కార్యక్రమము"
+    src="/images/vindu.png"
+    width={800}
+    height={450}
+    sizes="(max-width: 600px) 78vw, 420px"
+    className="venue-details__vindu-image"
+  />
+</div>
+</motion.figure>
+        </motion.section>
+
+        {/* ================================
+            INVITATION
+           ================================ */}
+        <motion.section
+          className="venue-details__hosts"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            ease: "easeOut",
+          }}
+        >
+          <h2>{hosts.title}</h2>
+
+          {hosts.names.map((name) => (
+            <p key={name}>{name}</p>
+          ))}
+        </motion.section>
+
+        <div
+          className="venue-details__divider"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+
+        {/* ================================
+            VENUE
+           ================================ */}
+        <motion.section
+          className="venue-details__venue"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            delay: 0.35,
+            ease: "easeOut",
+          }}
+        >
+          <p className="venue-details__venue-title">
+            {venue.title}
+          </p>
+
+          <motion.figure
+            className="venue-details__image-frame"
+            initial={{
+              opacity: 0,
+              scale: 0.96,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.45,
+              ease: "easeOut",
+            }}
+          >
+            <div className="venue-details__image-inner">
+              <Image
+                src="/images/venue.png"
+                alt="TTD Kalyana Mandapam"
+                fill
+                sizes="(max-width: 600px) 88vw, 540px"
+                className="venue-details__image"
+                priority
+              />
+            </div>
+          </motion.figure>
 
           <h2>{venue.name}</h2>
 
           <p className="venue-details__location">
             {venue.location}
           </p>
+
+          <motion.a
+            href={venue.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="venue-details__map"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.65,
+            }}
+          >
+            <span aria-hidden="true">⌖</span>
+            <span>Google Maps</span>
+          </motion.a>
         </motion.section>
 
-        {/* Map */}
-        <motion.a
-          href={venue.mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="venue-details__map"
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
+        <div
+          className="venue-details__divider"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+
+        {/* ================================
+            ORGANIZERS
+           ================================ */}
+        <motion.section
+          className="venue-details__organizers"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
-            delay: 0.75,
+            delay: 0.8,
+            ease: "easeOut",
           }}
         >
-          <span
-            className="venue-details__map-icon"
-            aria-hidden="true"
-          >
-            ⌖
-          </span>
+          <h2>{organizers.title}</h2>
 
-          <span>Google Maps</span>
-        </motion.a>
+          {organizers.names.map((name) => (
+            <p key={name}>{name}</p>
+          ))}
+        </motion.section>
 
-        {/* Closing */}
+        {/* ================================
+            FINAL CLOSING
+           ================================ */}
         <motion.footer
           className="venue-details__footer"
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
-            duration: 0.8,
-            delay: 0.95,
+            duration: 0.9,
+            delay: 1.05,
           }}
         >
           <FloralDivider />
 
-          <p>
-            మీ రాక కోసం ఎదురుచూస్తున్నాము
-          </p>
+          <p>మీ రాక కోసం</p>
+          <p>ఎదురుచూస్తున్నాము</p>
         </motion.footer>
 
         {onContinue && (
@@ -196,15 +260,11 @@ export default function VenueDetails({
             type="button"
             className="venue-details__continue"
             onClick={onContinue}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{
               duration: 0.7,
-              delay: 1.15,
+              delay: 1.25,
             }}
           >
             ← వెనుకకు

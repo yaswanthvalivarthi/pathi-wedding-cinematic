@@ -8,6 +8,7 @@ export const weddingData = {
     mother: "శ్రీమతి పత్తి నిర్మల",
     relationship: "మా కనిష్ఠ పుత్రిక",
     name: "చి|| ల|| సౌ|| పత్తి లీలా మాధురి",
+    familyLine: "(శ్రీ పత్తి నరసింహం - శ్రీమతి లక్ష్మీదేవి గార్ల మనుమరాలు)",
   },
 
   groom: {
@@ -31,6 +32,11 @@ export const weddingData = {
     time: "ఉదయం 7:40 నుండి 9:50 లోగా",
   },
 
+  /*
+   * Scene 03
+   * Kept here because the data may be useful later,
+   * but the hosts are no longer displayed in Scene 03.
+   */
   invitation: {
     hostsTitle: "ఆహ్వానించువారు",
 
@@ -50,11 +56,18 @@ export const weddingData = {
     awaiting: "మీ రాక కోసం ఎదురుచూస్తున్నాము",
   },
 
+  /*
+   * Scene 04 — Vindu
+   */
   vindu: {
     title: "విందు",
     subtitle: "భోజన కార్యక్రమము",
+    time: "మధ్యాహ్నం 12:30 నుండి 2:30 వరకు",
   },
 
+  /*
+   * Scene 04 — Venue
+   */
   venue: {
     title: "వేదిక",
     name: "TTD Kalyana Mandapam",
@@ -63,6 +76,33 @@ export const weddingData = {
       "https://www.google.com/maps/search/?api=1&query=TTD+Kalyana+Mandapam+Kodandaramapuram+Nellore",
   },
 
+  /*
+   * Scene 04 — People inviting the guests
+   */
+  hosts: {
+    title: "ఆహ్వానించువారు",
+
+    names: [
+      "శ్రీ పత్తి మల్లికార్జున - శ్రీమతి పత్తి నిర్మల",
+    ],
+  },
+
+  /*
+   * Scene 04 — Event organizers
+   */
+  organizers: {
+    title: "కార్యనిర్వాహకులు",
+
+    names: [
+      "శ్రీ పత్తి రాంప్రసాద్ - శ్రీమతి కరుణ",
+      "శ్రీ పత్తి రాజేష్ - శ్రీమతి హిమబిందు",
+      "మరియు బంధు మిత్రులు",
+    ],
+  },
+
+  /*
+   * Scene 03 — Traditional closing
+   */
   closing: [
     "వీరి వివాహ మహోత్సవానికి",
     "మీరు కుటుంబ సమేతంగా విచ్చేసి",

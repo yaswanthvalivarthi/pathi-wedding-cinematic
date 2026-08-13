@@ -119,6 +119,9 @@ export default function TraditionalInvitation({
           <h1 className="traditional-invitation__name">
             {bride.name}
           </h1>
+          <p className="traditional-invitation__family-line">
+            {bride.familyLine}
+            </p>
 
           <motion.div
             className="traditional-invitation__character traditional-invitation__character--bride"
