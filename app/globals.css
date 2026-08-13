@@ -331,11 +331,11 @@ body {
   }
 
   .divine-opening__sloka p {
-    margin: 2px 0;
-    font-size: 14px;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-  }
+  margin: 3px 0;
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
 
   .divine-opening__line {
     width: 70px;
@@ -2209,6 +2209,8 @@ body {
   border-radius: 27px 27px 55px 55px;
 }
 
+ 
+
 .venue-details__vindu-image-frame::before {
   inset: 4px;
 
@@ -2796,5 +2798,15 @@ body {
 
   .envelope-opening__instruction span {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .traditional-invitation__family-line {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 }
