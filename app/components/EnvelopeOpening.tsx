@@ -71,7 +71,9 @@ export default function EnvelopeOpening({
             <div className="envelope-opening__card">
               <span className="envelope-opening__card-symbol">
                 పెళ్ళి పిలుపు
+                
               </span>
+              
 
             </div>
 
@@ -96,8 +98,8 @@ export default function EnvelopeOpening({
             delay: 1.25,
           }}
         >
-          <span>ఆహ్వానాన్ని తెరవడానికి ఇక్కడ నొక్కండి</span>
-          <small>TAP TO OPEN</small>
+          
+          <small>TAP ON ENVELOPE TO OPEN</small>
         </motion.div>
       </motion.div>
     </main>
