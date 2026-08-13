@@ -1,16 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 type CoupleRevealProps = {
   onContinue?: () => void;
 };
 
+type Countdown = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+const WEDDING_DATE = new Date("2026-09-05T00:00:00+05:30");
+
+function getCountdown(): Countdown {
+  const now = new Date();
+  const difference = WEDDING_DATE.getTime() - now.getTime();
+
+  if (difference <= 0) {
+    return {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+  }
+
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor(
+      (difference / (1000 * 60 * 60)) % 24
+    ),
+    minutes: Math.floor(
+      (difference / (1000 * 60)) % 60
+    ),
+    seconds: Math.floor(
+      (difference / 1000) % 60
+    ),
+  };
+}
+
+function pad(value: number) {
+  return value.toString().padStart(2, "0");
+}
+
 export default function CoupleReveal({
   onContinue,
 }: CoupleRevealProps) {
   const [isDateRevealed, setIsDateRevealed] = useState(false);
+  const [countdown, setCountdown] = useState<Countdown>(
+    getCountdown()
+  );
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setCountdown(getCountdown());
+    }, 1000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, []);
 
   return (
     <main className="couple-reveal">
@@ -113,7 +166,7 @@ export default function CoupleReveal({
             delay: 2.2,
           }}
         >
-         ల వివాహ వేడుక
+          ల వివాహ వేడుక
         </motion.p>
 
         {/* Date */}
@@ -134,42 +187,145 @@ export default function CoupleReveal({
         >
           <button
             type="button"
-            className={`couple-reveal__date${isDateRevealed ? " couple-reveal__date--revealed" : ""}`}
+            className={`couple-reveal__date${
+              isDateRevealed
+                ? " couple-reveal__date--revealed"
+                : ""
+            }`}
             onClick={() => setIsDateRevealed(true)}
-            aria-label={isDateRevealed ? "Wedding date revealed" : "Tap to reveal the wedding date"}
+            aria-label={
+              isDateRevealed
+                ? "Wedding date revealed"
+                : "Tap to reveal the wedding date"
+            }
           >
             {isDateRevealed ? (
               <>
                 <motion.span
                   className="couple-reveal__sparkle couple-reveal__sparkle--left"
-                  initial={{ opacity: 0, scale: 0.25, rotate: -45 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.45 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.25,
+                    rotate: -45,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                  }}
                   aria-hidden="true"
                 >
                   ✦
                 </motion.span>
+
                 <motion.span
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.1 }}
+                  initial={{
+                    opacity: 0,
+                    y: 8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.1,
+                  }}
                 >
                   05 September 2026
                 </motion.span>
+
                 <motion.span
                   className="couple-reveal__sparkle couple-reveal__sparkle--right"
-                  initial={{ opacity: 0, scale: 0.25, rotate: 45 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.45, delay: 0.16 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.25,
+                    rotate: 45,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: 0,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.16,
+                  }}
                   aria-hidden="true"
                 >
                   ✦
                 </motion.span>
               </>
             ) : (
-              <span className="couple-reveal__date-prompt">Tap to reveal the wedding date ✦</span>
+              <span className="couple-reveal__date-prompt">
+                వివాహ తేదీ ఇక్కడ తెలుసుకోండి
+                <small>Tap to reveal the wedding date</small>
+            </span>
             )}
           </button>
+
+          {/* Countdown */}
+          {isDateRevealed && (
+            <motion.div
+              className="couple-reveal__countdown"
+              initial={{
+                opacity: 0,
+                y: 14,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.35,
+                ease: "easeOut",
+              }}
+            >
+              <span
+                className="couple-reveal__countdown-flower"
+                aria-hidden="true"
+              >
+                ❁
+              </span>
+
+              <p className="couple-reveal__countdown-title">
+                వివాహానికి ఇంకా
+              </p>
+
+              <div className="couple-reveal__countdown-values">
+                <div>
+                  <strong>{countdown.days}</strong>
+                  <span>రోజులు</span>
+                </div>
+
+                <div>
+                  <strong>{pad(countdown.hours)}</strong>
+                  <span>గంటలు</span>
+                </div>
+
+                <div>
+                  <strong>{pad(countdown.minutes)}</strong>
+                  <span>నిమిషాలు</span>
+                </div>
+
+                <div>
+                  <strong>{pad(countdown.seconds)}</strong>
+                  <span>సెకన్లు</span>
+                </div>
+              </div>
+
+              <span
+                className="couple-reveal__countdown-flower"
+                aria-hidden="true"
+              >
+                ❁
+              </span>
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Continue */}
@@ -189,7 +345,6 @@ export default function CoupleReveal({
           }}
         >
           పెళ్లి ముహూర్త వివరాలు చూడండి (continue)
-          
         </motion.button>
       </div>
     </main>

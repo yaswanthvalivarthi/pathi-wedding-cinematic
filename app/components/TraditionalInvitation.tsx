@@ -254,7 +254,7 @@ export default function TraditionalInvitation({
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            వేదిక వివరాలు చూడండి
+            విందు/వేదిక వివరాలు చూడండి
           </motion.button>
         )}
       </article>

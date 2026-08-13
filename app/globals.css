@@ -134,29 +134,54 @@ body {
 /* =========================================
    WEDDING INVITATION HEADING
    ========================================= */
-
-.divine-opening__wedding-heading {
-  margin-top: -20px;
-  margin-bottom: -10px;
-
-  color: #fff8eb;
+  .divine-opening__wedding-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   text-align: center;
-
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
-.divine-opening__wedding-heading p {
-  margin: 0;
+.divine-opening__wedding-family {
+  display: block;
 
-  font-size: clamp(30px, 5vw, 46px);
+  color: #f9f8f7;
 
-  font-weight: 700;
+  font-size: clamp(34px, 7vw, 54px);
 
-  line-height: 1.4;
+  font-weight: 600;
+
+  line-height: 1.1;
 
   letter-spacing: 0.04em;
+}
+
+.divine-opening__wedding-family-small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #f3e4c3;
+
+  font-size: clamp(18px, 3.5vw, 25px);
+
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+.divine-opening__wedding-subtitle {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #f9f8f7;
+
+  font-size: clamp(22px, 4.5vw, 34px);
+
+  font-weight: 600;
+
+  line-height: 1.3;
 }
 
 /* =========================================
@@ -381,6 +406,80 @@ body {
   padding: 42px 20px;
 }
 
+/* =========================================
+   SCENE 02 — WEDDING COUNTDOWN
+   ========================================= */
+
+.couple-reveal__countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 24px;
+
+  text-align: center;
+}
+
+.couple-reveal__countdown-flower {
+  display: block;
+
+  color: #b8862f;
+
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+.couple-reveal__countdown-title {
+  margin: 13px 0 12px;
+
+  color: #7a3d3f;
+
+  font-size: clamp(17px, 3vw, 21px);
+
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+.couple-reveal__countdown-values {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: clamp(16px, 4vw, 30px);
+
+  margin: 0;
+}
+
+.couple-reveal__countdown-values div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.couple-reveal__countdown-values strong {
+  color: #a87925;
+
+  font-size: clamp(23px, 5vw, 32px);
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.couple-reveal__countdown-values span {
+  margin-top: 5px;
+
+  color: #8c6250;
+
+  font-size: clamp(10px, 2vw, 13px);
+
+  line-height: 1.4;
+}
+
 /* -----------------------------------------
    Couple photograph
    ----------------------------------------- */
@@ -573,8 +672,19 @@ body {
 }
 
 .couple-reveal__date-prompt {
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.couple-reveal__date-prompt small {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
 }
 
 .couple-reveal__sparkle {
@@ -1246,11 +1356,13 @@ body {
 .traditional-invitation__date {
   margin: 8px 0;
 
-  color: #fff0c8;
+  color: #f9f8f6;
 
-  font-size: clamp(22px, 5vw, 30px);
+  font-size: 15px;
 
-  font-weight: 600;
+  font-weight: 200;
+
+  line-height: 1.8;
 }
 
 .traditional-invitation__time {
@@ -1405,6 +1517,28 @@ body {
    ----------------------------------------- */
 
 @media (max-width: 600px) {
+  .couple-reveal__countdown {
+  margin-top: 20px;
+}
+
+.couple-reveal__countdown-title {
+  margin-top: 11px;
+  margin-bottom: 10px;
+
+  font-size: 16px;
+}
+
+.couple-reveal__countdown-values {
+  gap: 14px;
+}
+
+.couple-reveal__countdown-values strong {
+  font-size: 22px;
+}
+
+.couple-reveal__countdown-values span {
+  font-size: 9px;
+}
   .traditional-invitation {
     padding: 8px 5px;
   }
@@ -2198,4 +2332,411 @@ body {
 .venue-details__vindu-image-inner {
   border-radius: 22px 22px 48px 48px;
 }
+}
+/* =========================================
+   SCENE 00 — ENVELOPE OPENING
+   ========================================= */
+
+.envelope-opening {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(255, 255, 255, 0.9),
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #f9f2e5 0%,
+      #f1e3cd 100%
+    );
+
+  color: #641f2c;
+}
+
+.envelope-opening__background {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(213, 168, 92, 0.12),
+      transparent 55%
+    );
+}
+
+.envelope-opening__content {
+  position: relative;
+  z-index: 2;
+
+  width: min(92%, 650px);
+
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+/* -----------------------------------------
+   Heading
+   ----------------------------------------- */
+
+.envelope-opening__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 34px;
+
+  color: #641f2c;
+}
+
+.envelope-opening__heading-main {
+  font-size: clamp(28px, 6vw, 42px);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.02em;
+
+  color: #7a1f2b;
+
+  text-shadow:
+    0 2px 8px rgba(166, 120, 44, 0.18);
+}
+
+.envelope-opening__heading-sub {
+  margin-top: 2px;
+
+  font-size: clamp(22px, 4.5vw, 32px);
+
+  font-weight: 400;
+
+  line-height: 1.35;
+}
+
+.envelope-opening__heading small {
+  margin-top: 10px;
+
+  color: #a6782c;
+
+  font-size: 10px;
+
+  letter-spacing: 0.3em;
+}
+
+/* -----------------------------------------
+   Envelope button
+   ----------------------------------------- */
+
+.envelope-opening__button {
+  position: relative;
+
+  width: min(82vw, 430px);
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+/* -----------------------------------------
+   Envelope
+   ----------------------------------------- */
+
+.envelope-opening__envelope {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1.55 / 1;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ead7b7,
+      #dfc9a4
+    );
+
+  border: 1px solid rgba(166, 120, 44, 0.55);
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 22px 55px rgba(73, 37, 29, 0.2),
+    0 5px 15px rgba(73, 37, 29, 0.08);
+
+  overflow: hidden;
+}
+
+/* Inner envelope border */
+
+.envelope-opening__envelope::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 10px;
+
+  border: 1px solid rgba(166, 120, 44, 0.32);
+
+  border-radius: 7px;
+
+  pointer-events: none;
+}
+
+/* -----------------------------------------
+   Envelope flap
+   ----------------------------------------- */
+
+.envelope-opening__flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 58%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0dfc1 0%,
+      #dcc4a0 100%
+    );
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 100%
+  );
+
+  border-bottom: 1px solid rgba(166, 120, 44, 0.25);
+
+  z-index: 4;
+}
+
+/* -----------------------------------------
+   Invitation card
+   ----------------------------------------- */
+
+.envelope-opening__card {
+  position: absolute;
+
+  left: 13%;
+  right: 13%;
+
+  bottom: 12%;
+
+  height: 58%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  background: #fffaf0;
+
+  box-shadow:
+    0 10px 25px rgba(73, 37, 29, 0.12);
+
+  z-index: 2;
+}
+
+.envelope-opening__card-symbol {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 24px;
+
+  transform: translateX(-50%);
+
+  z-index: 4;
+
+  width: max-content;
+
+  color: #641f2c;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(20px, 4vw, 27px);
+
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  text-align: center;
+}
+
+.envelope-opening__card-bride,
+.envelope-opening__card-groom {
+  color: #806653;
+
+  font-size: 12px;
+
+  margin-top: 5px;
+}
+
+/* -----------------------------------------
+   Seal
+   ----------------------------------------- */
+
+.envelope-opening__seal {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 5;
+
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #641f2c;
+
+  border: 4px solid #b8862f;
+
+  color: #f6d98d;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  letter-spacing: 0;
+
+  text-align: center;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 230, 170, 0.25);
+}
+
+/* -----------------------------------------
+   Instruction
+   ----------------------------------------- */
+
+.envelope-opening__instruction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 34px;
+
+  color: #641f2c;
+}
+
+.envelope-opening__instruction span {
+  font-size: 16px;
+
+  letter-spacing: 0.04em;
+}
+
+.envelope-opening__instruction small {
+  margin-top: 8px;
+
+  color: #a6782c;
+
+  font-size: 9px;
+
+  letter-spacing: 0.3em;
+}
+
+.envelope-opening__seal-text {
+  display: block;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  letter-spacing: 0;
+}
+
+/* -----------------------------------------
+   Mobile
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+  .envelope-opening__content {
+    padding: 30px 18px;
+  }
+
+  .envelope-opening__heading {
+    margin-bottom: 27px;
+  }
+
+  .envelope-opening__heading-main {
+    font-size: 40px;
+  }
+
+  .envelope-opening__heading-sub {
+    font-size: 21px;
+  }
+
+  .envelope-opening__heading small {
+    font-size: 8px;
+  }
+
+  .envelope-opening__button {
+    width: min(88vw, 390px);
+  }
+
+  .envelope-opening__seal {
+    width: 60px;
+    height: 60px;
+
+    font-size: 24px;
+  }
+
+  .envelope-opening__instruction {
+    margin-top: 27px;
+  }
+
+  .envelope-opening__instruction span {
+    font-size: 14px;
+  }
 }

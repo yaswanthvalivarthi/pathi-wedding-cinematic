@@ -74,7 +74,7 @@ export default function DivineOpening({
             ease: "easeOut",
           }}
         >
-          <p>శ్రీరస్తు</p>
+          <p>శ్రీరస్తు|</p>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -85,7 +85,7 @@ export default function DivineOpening({
               ease: "easeOut",
             }}
           >
-            శుభమస్తు
+            శుభమస్తు||
           </motion.p>
         </motion.div>
 
@@ -94,17 +94,27 @@ export default function DivineOpening({
             ===================================== */}
 
         <motion.div
-          className="divine-opening__wedding-heading"
-          initial={{ opacity: 0, y: 18, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{
-            duration: 1.2,
-            delay: 1.35,
-            ease: "easeOut",
-          }}
-        >
-          <p>పత్తి వారి పెళ్లి పిలుపు</p>
-        </motion.div>
+  className="divine-opening__wedding-heading"
+  initial={{ opacity: 0, y: 18, scale: 0.97 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  transition={{
+    duration: 1.2,
+    delay: 1.35,
+    ease: "easeOut",
+  }}
+>
+  <span className="divine-opening__wedding-family">
+    పత్తి
+  </span>
+
+  <span className="divine-opening__wedding-family-small">
+    వారి
+  </span>
+
+  <span className="divine-opening__wedding-subtitle">
+    కళ్యాణ మహోత్సవ ఆహ్వానము
+  </span>
+</motion.div>
 
         {/* =====================================
             3. TOP DIVIDER
@@ -189,7 +199,7 @@ export default function DivineOpening({
             scale: 0.97,
           }}
         >
-          <span>ఆహ్వానాన్ని తెరవండి</span>
+          <span>వధువు మరియు వరుడు</span>
 
           <small>TAP TO OPEN</small>
         </motion.button>

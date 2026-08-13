@@ -267,7 +267,7 @@ export default function VenueDetails({
               delay: 1.25,
             }}
           >
-            ← వెనుకకు
+            ← ← ఆహ్వానం ప్రారంభానికి
           </motion.button>
         )}
       </article>

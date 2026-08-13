@@ -1,26 +1,30 @@
 "use client";
 
+import EnvelopeOpening from "./components/EnvelopeOpening";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
 
 import DivineOpening from "./components/DivineOpening";
 import CoupleReveal from "./components/CoupleReveal";
 import TraditionalInvitation from "./components/TraditionalInvitation";
 import VenueDetails from "./components/VenueDetails";
 
-type Scene = "opening" | "couple" | "invitation" | "venue";
+type Scene = "envelope" | "opening" | "couple" | "invitation" | "venue";
 
 export default function Home() {
-  const [scene, setScene] = useState<Scene>("opening");
+  const [scene, setScene] = useState<Scene>("envelope");
+
+  // Always open Scene 04 from the top.
   useEffect(() => {
-  if (scene === "venue") {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant",
-    });
-  }
-}, [scene]);
+    if (scene === "venue") {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }
+  }, [scene]);
 
   const handleOpeningComplete = () => {
     setScene("couple");
@@ -36,16 +40,47 @@ export default function Home() {
     setScene("invitation");
   };
 
+  // Scene 04 → Scene 01
   const handleVenueContinue = () => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "instant",
     });
+
+    setScene("opening");
   };
 
   return (
     <AnimatePresence mode="wait">
+      {scene === "envelope" && (
+  <motion.div
+    key="envelope-opening"
+    initial={{
+      opacity: 0,
+      scale: 0.98,
+    }}
+    animate={{
+      opacity: 1,
+      scale: 1,
+    }}
+    exit={{
+      opacity: 0,
+      scale: 1.03,
+    }}
+    transition={{
+      duration: 1,
+      ease: "easeOut",
+    }}
+  >
+    <EnvelopeOpening
+      onOpen={() => setScene("opening")}
+    />
+  </motion.div>
+)}
+      {/* ================================
+          SCENE 01 — DIVINE OPENING
+         ================================ */}
       {scene === "opening" && (
         <motion.div
           key="divine-opening"
@@ -66,6 +101,9 @@ export default function Home() {
         </motion.div>
       )}
 
+      {/* ================================
+          SCENE 02 — COUPLE REVEAL
+         ================================ */}
       {scene === "couple" && (
         <motion.div
           key="couple-reveal"
@@ -86,10 +124,15 @@ export default function Home() {
             ease: "easeOut",
           }}
         >
-          <CoupleReveal onContinue={handleCoupleComplete} />
+          <CoupleReveal
+            onContinue={handleCoupleComplete}
+          />
         </motion.div>
       )}
 
+      {/* ================================
+          SCENE 03 — TRADITIONAL INVITATION
+         ================================ */}
       {scene === "invitation" && (
         <motion.div
           key="traditional-invitation"
@@ -116,6 +159,9 @@ export default function Home() {
         </motion.div>
       )}
 
+      {/* ================================
+          SCENE 04 — VINDU / VENUE DETAILS
+         ================================ */}
       {scene === "venue" && (
         <motion.div
           key="venue-details"
@@ -136,7 +182,9 @@ export default function Home() {
             ease: "easeOut",
           }}
         >
-          <VenueDetails onContinue={handleVenueContinue} />
+          <VenueDetails
+            onContinue={handleVenueContinue}
+          />
         </motion.div>
       )}
     </AnimatePresence>
