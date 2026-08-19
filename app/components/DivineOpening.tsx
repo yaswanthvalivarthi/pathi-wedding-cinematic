@@ -8,9 +8,9 @@ type DivineOpeningProps = {
 };
 
 const slokaLines = [
-  "|| శ్రీరామపత్నీ జనకష్య పుత్రీ!",
-  "సీతాంగనా సుందర కోమలాంగీ.",
-  "భూగర్భజాత భువనైక మాతా",
+  "|| శ్రీరామపత్నీ జనకస్యపుత్రీ!",
+  "సీతాంగనా సుందర కోమలాంగీ ||",
+  "భూగర్భజాత భువనైక మాతా!",
   "వధూవరాభ్యాం వరదాభవంతు ||",
 ];
 
@@ -64,30 +64,42 @@ export default function DivineOpening({
             ===================================== */}
 
         <motion.div
-          className="divine-opening__auspicious"
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          transition={{
-            duration: 1.1,
-            delay: 0.5,
-            ease: "easeOut",
-          }}
-        >
-          <p>శ్రీరస్తు|</p>
+  className="divine-opening__auspicious"
+  initial="hidden"
+  animate="visible"
+  variants={fadeUp}
+  transition={{
+    duration: 1.1,
+    delay: 0.5,
+    ease: "easeOut",
+  }}
+>
+  <p>శ్రీరస్తు!</p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.9,
-              ease: "easeOut",
-            }}
-          >
-            శుభమస్తు||
-          </motion.p>
-        </motion.div>
+  <motion.p
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{
+      duration: 1,
+      delay: 0.9,
+      ease: "easeOut",
+    }}
+  >
+    శుభమస్తు!!
+  </motion.p>
+
+  <motion.p
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{
+      duration: 1,
+      delay: 1.2,
+      ease: "easeOut",
+    }}
+  >
+    అవిఘ్నమస్తు!!!
+  </motion.p>
+</motion.div>
 
         {/* =====================================
             2. WEDDING INVITATION HEADING

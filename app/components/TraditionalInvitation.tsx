@@ -117,8 +117,11 @@ export default function TraditionalInvitation({
           </span>
 
           <h1 className="traditional-invitation__name">
-            {bride.name}
-          </h1>
+  <span className="traditional-invitation__name-prefix">
+    చి|| ల|| సౌ||
+  </span>{" "}
+   లీలా మాధురి
+</h1>
           <p className="traditional-invitation__family-line">
             {bride.familyLine}
             </p>
@@ -160,8 +163,11 @@ export default function TraditionalInvitation({
           </span>
 
           <h2 className="traditional-invitation__name">
-            {groom.name}
-          </h2>
+  <span className="traditional-invitation__name-prefix">
+    చి||
+  </span>{" "}
+   శివసాయి కుమార్
+</h2>
 
           <motion.div
             className="traditional-invitation__character traditional-invitation__character--groom"
