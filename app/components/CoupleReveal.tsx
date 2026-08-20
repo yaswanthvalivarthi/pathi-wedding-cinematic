@@ -87,9 +87,12 @@ export default function CoupleReveal({
           }}
         >
           <img
-            src="/images/couple-hero.png"
-            alt="Bride and groom"
-          />
+  src="/images/couple-hero.png"
+  alt="Bride and groom"
+  className="protected-image"
+  draggable={false}
+  onContextMenu={(event) => event.preventDefault()}
+/>
         </motion.div>
 
         {/* Bride */}

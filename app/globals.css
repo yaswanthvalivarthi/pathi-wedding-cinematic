@@ -1374,6 +1374,35 @@ body {
 
   line-height: 1.6;
 }
+/* Pushkara Kalam */
+.traditional-invitation__pushkara {
+  margin-top: 28px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.traditional-invitation__pushkara-couple {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.traditional-invitation__pushkara h4 {
+  margin: 6px 0 12px;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #7a1f2b;
+}
+
+.traditional-invitation__pushkara p {
+  margin: 4px 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5c3825;
+}
 
 /* -----------------------------------------
    Venue
@@ -3040,4 +3069,74 @@ body {
   font-size: 0.55em;
   font-weight: 500;
   white-space: nowrap;
+}
+/* =========================================
+   IMAGE PROTECTION
+   ========================================= */
+
+.protected-image {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================================
+   PUSHKARA KALAM
+   ========================================= */
+
+.traditional-invitation__pushkara {
+  width: min(100%, 430px);
+
+  margin: 28px auto 0;
+
+  padding-top: 4px;
+
+  text-align: center;
+}
+
+.traditional-invitation__pushkara-divider {
+  margin-bottom: 16px;
+
+  color: #d0a447;
+
+  font-size: 12px;
+
+  letter-spacing: 0.35em;
+}
+
+.traditional-invitation__pushkara h4 {
+  margin: 0 0 12px;
+
+  color: #d8ae55;
+
+  font-size: clamp(21px, 4vw, 27px);
+
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+.traditional-invitation__pushkara p {
+  margin: 4px 0;
+
+  color: #f1dfbb;
+
+  font-size: clamp(15px, 3vw, 19px);
+
+  line-height: 1.7;
+}
+.traditional-invitation__pushkara-couple {
+  display: block;
+
+  width: 110px;
+  height: auto;
+
+  margin: 0 auto 8px;
+
+  object-fit: contain;
+}
+@media (max-width: 600px) {
+  .traditional-invitation__pushkara-couple {
+    width: 90px;
+  }
 }

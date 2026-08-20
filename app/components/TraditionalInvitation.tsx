@@ -134,12 +134,14 @@ export default function TraditionalInvitation({
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Image
-              src="/images/bride-character.jpg"
-              alt="Bride illustration"
-              width={258}
-              height={516}
-              priority
-            />
+  src="/images/bride-character.jpg"
+  alt="Bride illustration"
+  width={258}
+  height={516}
+  priority
+  className="protected-image"
+  onContextMenu={(event) => event.preventDefault()}
+/>
           </motion.div>
         </motion.section>
 
@@ -177,11 +179,13 @@ export default function TraditionalInvitation({
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Image
-              src="/images/groom-character.jpg"
-              alt="Groom illustration"
-              width={258}
-              height={516}
-            />
+  src="/images/groom-character.jpg"
+  alt="Groom illustration"
+  width={258}
+  height={516}
+  className="protected-image"
+  onContextMenu={(event) => event.preventDefault()}
+/>
           </motion.div>
         </motion.section>
 
@@ -218,28 +222,57 @@ export default function TraditionalInvitation({
         </div>
 
         {/* Muhurtham */}
-        <motion.section
-          className="traditional-invitation__muhurtham"
-          {...reveal}
-        >
-          <h3>{muhurtham.title}</h3>
+<motion.section
+  className="traditional-invitation__muhurtham"
+  {...reveal}
+>
+  <h3>{muhurtham.title}</h3>
 
-          {muhurtham.details && (
-            <p className="traditional-invitation__calendar">
-              {muhurtham.details}
-            </p>
-          )}
+  {muhurtham.details && (
+    <p className="traditional-invitation__calendar">
+      {muhurtham.details}
+    </p>
+  )}
 
-          <p className="traditional-invitation__date">
-            {muhurtham.date}
-          </p>
+  <p className="traditional-invitation__date">
+    {muhurtham.date}
+  </p>
 
-          <p className="traditional-invitation__time">
-            {muhurtham.time}
-          </p>
-        </motion.section>
+  <p className="traditional-invitation__time">
+    {muhurtham.time}
+  </p>
 
+  {/* Pushkara Kalam */}
+  {muhurtham.pushkaraKalam && (
+    <motion.div
+      className="traditional-invitation__pushkara"
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{
+        duration: 0.75,
+        delay: 0.2,
+        ease: "easeOut",
+      }}
+    >
+     
 
+<Image
+  src="/images/pushkara-couple.png"
+  alt=""
+  width={150}
+  height={100}
+  className="traditional-invitation__pushkara-couple"
+/>
+
+<h4>{muhurtham.pushkaraKalam.title}</h4>
+
+      <p>{muhurtham.pushkaraKalam.from}</p>
+
+      <p>{muhurtham.pushkaraKalam.to}</p>
+    </motion.div>
+  )}
+</motion.section>
         {/* Traditional closing blessing */}
         <motion.section
           className="traditional-invitation__closing"
