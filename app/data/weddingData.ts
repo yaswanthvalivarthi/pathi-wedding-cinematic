@@ -70,7 +70,7 @@ export const weddingData = {
    */
   venue: {
     title: "వేదిక",
-    name: "వాకాటి గిరికుమార్ భాగ్యలక్ష్మి కల్యాణ మండపం(VGB)",
+    name: "వాకాటి గిరికుమార్ భాగ్యలక్ష్మి కల్యాణ మండపం (VGB)",
     location: "బాలాజీ నగర్ మెయిన్ రోడ్, నెల్లూరు.",
     mapsUrl:
       "https://maps.app.goo.gl/a28wYXCyFjecyMBt7",

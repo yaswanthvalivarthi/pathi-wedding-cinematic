@@ -2116,6 +2116,231 @@ body {
 }
 
 /* =========================================
+   MAP PREVIEW
+   ========================================= */
+
+.venue-details__map-preview {
+  display: block;
+
+  width: min(100%, 540px);
+
+  margin: 26px auto 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(232, 202, 135, 0.7);
+  border-radius: 18px;
+
+  background: #eee8d8;
+
+  color: #541017;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.28);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.venue-details__map-preview:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.36);
+}
+
+.venue-details__map-preview-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 220px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e7e1cf 0%,
+      #f2eddd 48%,
+      #ded8c5 100%
+    );
+}
+
+/* Map roads */
+
+.venue-details__map-preview-road {
+  position: absolute;
+
+  height: 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 0 0 2px rgba(198, 190, 166, 0.55);
+}
+
+.venue-details__map-preview-road.road-one {
+  width: 125%;
+
+  top: 35%;
+
+  left: -15%;
+
+  transform: rotate(17deg);
+}
+
+.venue-details__map-preview-road.road-two {
+  width: 110%;
+
+  top: 67%;
+
+  left: -5%;
+
+  transform: rotate(-12deg);
+}
+
+.venue-details__map-preview-road.road-three {
+  width: 85%;
+
+  top: 5%;
+
+  left: 42%;
+
+  transform: rotate(78deg);
+}
+
+/* Location marker */
+
+.venue-details__map-preview-marker {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #7a1f2b;
+
+  border: 3px solid #f6d98d;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.3);
+
+  font-size: 23px;
+}
+
+.venue-details__map-preview-label {
+  position: absolute;
+
+  left: 50%;
+  top: calc(50% + 38px);
+
+  transform: translateX(-50%);
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 250, 238, 0.94);
+
+  color: #541017;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+/* Bottom navigation bar */
+
+.venue-details__map-preview-footer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 12px 16px;
+
+  background: #fff8e8;
+
+  color: #641f2c;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+.venue-details__map-preview-footer span:last-child {
+  color: #a6782c;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .venue-details__map-preview {
+    width: min(100%, 360px);
+
+    margin-top: 20px;
+
+    border-radius: 15px;
+  }
+
+  .venue-details__map-preview-image {
+    height: 175px;
+  }
+
+  .venue-details__map-preview-marker {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+  }
+
+  .venue-details__map-preview-label {
+    top: calc(50% + 34px);
+
+    font-size: 11px;
+
+    padding: 5px 9px;
+  }
+
+  .venue-details__map-preview-footer {
+    padding: 10px 12px;
+
+    font-size: 11px;
+  }
+
+  .venue-details__map-preview-footer span:last-child {
+    font-size: 10px;
+  }
+}
+
+/* =========================================
    FINAL CLOSING
    ========================================= */
 

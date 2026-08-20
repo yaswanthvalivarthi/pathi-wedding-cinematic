@@ -194,20 +194,36 @@ export default function VenueDetails({
           </p>
 
           <motion.a
-            href={venue.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="venue-details__map"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.65,
-            }}
-          >
-            <span aria-hidden="true">⌖</span>
-            <span>Google Maps</span>
-          </motion.a>
+  href={venue.mapsUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="venue-details__map-preview"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.7,
+    delay: 0.65,
+  }}
+>
+  <div className="venue-details__map-preview-image">
+    <div className="venue-details__map-preview-road road-one" />
+    <div className="venue-details__map-preview-road road-two" />
+    <div className="venue-details__map-preview-road road-three" />
+
+    <div className="venue-details__map-preview-marker">
+      <span>📍</span>
+    </div>
+
+    <div className="venue-details__map-preview-label">
+      వాకాటి గిరికుమార్ భాగ్యలక్ష్మి కల్యాణ మండపం (VGB)
+    </div>
+  </div>
+
+  <div className="venue-details__map-preview-footer">
+    <span>📍 Tap to open directions</span>
+    <span>Google Maps ↗</span>
+  </div>
+</motion.a>
         </motion.section>
 
         <div
