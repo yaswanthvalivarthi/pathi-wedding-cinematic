@@ -81,7 +81,7 @@ export default function EnvelopeOpening({
             
             <div className="envelope-opening__seal">
                 <span className="envelope-opening__seal-text">
-                    L & S
+                    L❤️S
                 </span>
             </div>
 
